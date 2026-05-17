@@ -1,286 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Japan Trip Plan | 2 People</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Japan 2026 | Pro Photo Glass</title>
 <style>
-  :root{
-    --bg:#070A0F;
-    --panel:#111827;
-    --panel2:#0F172A;
-    --card:#111827;
-    --text:#F8FAFC;
-    --muted:#CBD5E1;
-    --soft:#94A3B8;
-    --line:rgba(255,255,255,.12);
-    --red:#EF4444;
-    --orange:#F97316;
-    --gold:#FBBF24;
-    --green:#22C55E;
-    --blue:#38BDF8;
-    --purple:#A78BFA;
-    --radius:24px;
-    --shadow:0 24px 70px rgba(0,0,0,.45);
-  }
-
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background:
-      radial-gradient(circle at 20% 0%, rgba(239,68,68,.20), transparent 35%),
-      radial-gradient(circle at 80% 10%, rgba(56,189,248,.16), transparent 32%),
-      linear-gradient(180deg,#070A0F 0%,#0B1020 45%,#070A0F 100%);
-    color:var(--text);
-    line-height:1.55;
-  }
-
-  a{color:inherit}
-  .wrap{width:min(1180px,calc(100% - 32px));margin:auto}
-
-  .hero{
-    min-height:92vh;
-    display:grid;
-    align-items:end;
-    padding:26px 0 54px;
-    position:relative;
-    overflow:hidden;
-  }
-  .hero:before{
-    content:"";
-    position:absolute;inset:0;
-    background:
-      linear-gradient(180deg,rgba(7,10,15,.18),rgba(7,10,15,.94)),
-      url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1800&q=85') center/cover no-repeat;
-    z-index:-2;
-  }
-  .hero:after{
-    content:"";
-    position:absolute;inset:0;
-    background:linear-gradient(90deg,rgba(7,10,15,.92),rgba(7,10,15,.32),rgba(7,10,15,.92));
-    z-index:-1;
-  }
-
-  .nav{
-    position:absolute;top:20px;left:50%;transform:translateX(-50%);
-    width:min(1180px,calc(100% - 32px));
-    display:flex;justify-content:space-between;align-items:center;
-    padding:14px 16px;
-    border:1px solid var(--line);
-    background:rgba(7,10,15,.58);
-    backdrop-filter:blur(18px);
-    border-radius:999px;
-  }
-  .brand{font-weight:900;letter-spacing:-.03em}
-  .navlinks{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
-  .navlinks a{
-    text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:800;
-    padding:8px 12px;border-radius:999px;
-  }
-  .navlinks a:hover{background:rgba(255,255,255,.1);color:#fff}
-
-  .heroGrid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:end}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:8px 13px;border:1px solid rgba(251,191,36,.35);
-    background:rgba(251,191,36,.10);color:#FDE68A;border-radius:999px;
-    font-weight:900;font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;
-  }
-  h1{font-size:clamp(3rem,8vw,6.7rem);line-height:.88;letter-spacing:-.08em;margin:18px 0 18px;font-weight:950}
-  .lead{font-size:clamp(1rem,2vw,1.22rem);max-width:700px;color:#E2E8F0;font-weight:650}
-  .heroStats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-  .stat{
-    background:rgba(15,23,42,.72);border:1px solid var(--line);border-radius:22px;
-    padding:18px;box-shadow:var(--shadow);backdrop-filter:blur(18px)
-  }
-  .stat b{display:block;font-size:1.35rem}.stat span{color:var(--soft);font-size:.82rem;font-weight:750}
-
-  section{padding:64px 0}
-  .sectionHead{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:24px}
-  .sectionHead h2{font-size:clamp(1.8rem,3vw,2.6rem);letter-spacing:-.05em;line-height:1}
-  .sectionHead p{color:var(--soft);max-width:540px;font-weight:650}
-
-  .route{
-    display:grid;grid-template-columns:repeat(5,1fr);gap:12px;
-    background:rgba(15,23,42,.54);border:1px solid var(--line);border-radius:var(--radius);padding:14px;
-  }
-  .routeCard{padding:18px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08)}
-  .routeCard small{color:var(--soft);font-weight:850;text-transform:uppercase;letter-spacing:.1em;font-size:.68rem}
-  .routeCard strong{display:block;margin-top:5px;font-size:1.05rem}
-
-  .timeline{display:grid;gap:18px}
-  .day{
-    display:grid;grid-template-columns:220px 1fr;gap:0;min-height:210px;
-    border-radius:var(--radius);overflow:hidden;background:rgba(17,24,39,.82);
-    border:1px solid var(--line);box-shadow:var(--shadow)
-  }
-  .pic{position:relative;min-height:210px;background:#111;overflow:hidden}
-  .pic img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.08) contrast(1.04)}
-  .pic:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.72))}
-  .dayNum{position:absolute;left:14px;bottom:14px;z-index:2;background:rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(12px);padding:9px 12px;border-radius:999px;font-weight:950;font-size:.8rem}
-  .content{padding:24px;display:grid;align-content:center;gap:10px}
-  .meta{display:flex;gap:8px;flex-wrap:wrap}
-  .pill{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.08);color:#E2E8F0;border:1px solid rgba(255,255,255,.1);font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
-  .pill.red{background:rgba(239,68,68,.18);color:#FCA5A5}.pill.blue{background:rgba(56,189,248,.15);color:#7DD3FC}.pill.green{background:rgba(34,197,94,.14);color:#86EFAC}.pill.orange{background:rgba(249,115,22,.15);color:#FDBA74}.pill.purple{background:rgba(167,139,250,.14);color:#C4B5FD}
-  .content h3{font-size:1.45rem;letter-spacing:-.035em}.content p{color:#D8E2EF;font-weight:600}.note{color:var(--soft)!important;font-size:.92rem}
-
-  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .panel{background:rgba(17,24,39,.74);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
-  .panel h3{font-size:1.25rem;margin-bottom:12px;letter-spacing:-.03em}.panel p,.panel li{color:#D8E2EF;font-weight:600}.panel ul{padding-left:18px;display:grid;gap:8px}.price{font-size:2rem;font-weight:950;letter-spacing:-.06em;margin:8px 0;color:#fff}
-
-  .tableWrap{overflow:auto;border:1px solid var(--line);border-radius:var(--radius);background:rgba(17,24,39,.72);box-shadow:var(--shadow)}
-  table{width:100%;border-collapse:collapse;min-width:720px}
-  th,td{padding:15px 16px;text-align:left;border-bottom:1px solid rgba(255,255,255,.09)}
-  th{color:#93C5FD;font-size:.76rem;text-transform:uppercase;letter-spacing:.11em;background:rgba(15,23,42,.9)}
-  td{color:#E5EEF9;font-weight:650}tr:last-child td{border-bottom:0}.total td{font-weight:950;color:#fff;background:rgba(251,191,36,.08)}
-
-  .budget{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.money{text-align:center;background:rgba(17,24,39,.76);border:1px solid var(--line);border-radius:20px;padding:18px}.money .emoji{font-size:1.8rem}.money small{display:block;color:var(--soft);font-weight:850;text-transform:uppercase;letter-spacing:.1em;font-size:.68rem;margin:8px 0 4px}.money b{font-size:1.1rem}.money.final{background:linear-gradient(135deg,rgba(239,68,68,.96),rgba(249,115,22,.96));border:0}.money.final small{color:rgba(255,255,255,.76)}
-
-  .checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.check{display:flex;gap:12px;align-items:flex-start;background:rgba(17,24,39,.72);border:1px solid var(--line);border-radius:18px;padding:16px}.check b{display:block}.check span{font-size:1.2rem}.check p{color:#D8E2EF;font-weight:600;font-size:.94rem}
-
-  .footer{padding:44px 0 58px;color:var(--soft);text-align:center;border-top:1px solid var(--line);font-weight:700}
-
-  @media(max-width:920px){.heroGrid{grid-template-columns:1fr}.route{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}.budget{grid-template-columns:repeat(2,1fr)}.day{grid-template-columns:1fr}.pic{height:220px}.checklist{grid-template-columns:1fr}.nav{border-radius:24px;align-items:flex-start}.navlinks{display:none}}
-  @media(max-width:520px){.route{grid-template-columns:1fr}.hero{min-height:82vh}.content{padding:20px}.sectionHead{display:block}.sectionHead p{margin-top:10px}.budget{grid-template-columns:1fr}}
+:root{
+  --ink:#101828;--ink2:#344054;--muted:#667085;--soft:#98A2B3;--line:rgba(16,24,40,.10);--glass:rgba(255,255,255,.72);--glass2:rgba(255,255,255,.88);--shadow:0 24px 80px rgba(16,24,40,.12);--shadow2:0 14px 34px rgba(16,24,40,.08);--red:#ff4d5e;--orange:#ff9f1c;--blue:#0ea5e9;--green:#10b981;--violet:#8b5cf6;--max:1180px;--r:30px
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:radial-gradient(circle at 12% 6%,rgba(14,165,233,.18),transparent 30%),radial-gradient(circle at 86% 8%,rgba(255,77,94,.16),transparent 34%),radial-gradient(circle at 76% 72%,rgba(139,92,246,.12),transparent 34%),linear-gradient(180deg,#f8fbff 0%,#fff 44%,#f4f7fb 100%);overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}a{text-decoration:none;color:inherit}.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}.noise{position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.03;background-image:url('data:image/svg+xml,%3Csvg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)"/%3E%3C/svg%3E')}.blob{position:fixed;border-radius:999px;filter:blur(34px);opacity:.34;z-index:-1;animation:float 10s ease-in-out infinite alternate}.b1{width:380px;height:380px;background:#bde7ff;left:-120px;top:80px}.b2{width:440px;height:440px;background:#ffd1d7;right:-150px;top:20px;animation-delay:1.4s}.b3{width:340px;height:340px;background:#ddd6fe;right:14%;bottom:8%;animation-delay:2.4s}@keyframes float{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(30px,-24px,0) scale(1.07)}}
+.nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:60;width:min(var(--max),calc(100% - 28px));display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 14px 12px 18px;border:1px solid rgba(255,255,255,.62);background:rgba(255,255,255,.66);box-shadow:0 20px 55px rgba(16,24,40,.10);backdrop-filter:blur(24px) saturate(180%);border-radius:999px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:-.04em;white-space:nowrap}.brandmark{width:32px;height:32px;border-radius:12px;background:linear-gradient(135deg,var(--red),var(--orange));display:grid;place-items:center;color:white;box-shadow:0 10px 24px rgba(255,77,94,.25)}.links{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}.links a{font-size:.82rem;font-weight:780;color:#344054;padding:9px 12px;border-radius:999px;transition:.2s}.links a:hover{background:rgba(16,24,40,.06);transform:translateY(-1px)}
+.hero{min-height:100vh;display:grid;align-items:center;padding:120px 0 76px}.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:36px;align-items:center}.kicker{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid rgba(255,77,94,.18);background:rgba(255,255,255,.72);backdrop-filter:blur(20px);border-radius:999px;color:#b42318;font-weight:860;font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;box-shadow:var(--shadow2)}h1{margin:18px 0;font-size:clamp(3.35rem,8vw,7.65rem);line-height:.86;letter-spacing:-.095em;font-weight:900}.hero-copy p{max-width:720px;color:#475467;font-size:clamp(1.02rem,2vw,1.22rem);font-weight:560;line-height:1.65}.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 17px;border-radius:999px;font-weight:780;border:1px solid var(--line);background:rgba(255,255,255,.78);box-shadow:var(--shadow2);backdrop-filter:blur(20px);transition:.2s}.btn.primary{background:linear-gradient(135deg,#101828,#344054);color:white;border:0}.btn:hover{transform:translateY(-2px);box-shadow:0 20px 40px rgba(16,24,40,.12)}
+.device{justify-self:end;width:min(100%,540px);padding:14px;border-radius:42px;background:rgba(255,255,255,.58);border:1px solid rgba(255,255,255,.72);box-shadow:0 30px 100px rgba(16,24,40,.18);backdrop-filter:blur(26px) saturate(180%)}.screen{overflow:hidden;border-radius:32px;min-height:632px;background:linear-gradient(180deg,#fff,#f2f6fb);border:1px solid rgba(16,24,40,.08)}.cover{height:330px;position:relative;overflow:hidden}.cover img,.mini img,.photo img,.day-photo img{width:100%;height:100%;display:block;object-fit:cover}.cover:after,.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(16,24,40,.30))}.screen-body{padding:22px}.screen-body h3{margin:0;font-size:1.65rem;letter-spacing:-.055em}.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.chip{padding:7px 10px;border-radius:999px;background:#f2f4f7;color:#344054;font-size:.76rem;font-weight:800}.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}.quick{padding:14px;border-radius:18px;background:white;border:1px solid rgba(16,24,40,.08);box-shadow:0 12px 28px rgba(16,24,40,.06)}.quick b{display:block;font-size:1.12rem;letter-spacing:-.035em}.quick span{color:var(--muted);font-size:.8rem;font-weight:720}
+section{padding:78px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px}.section-head h2{margin:0;font-size:clamp(2rem,3vw,3rem);line-height:.98;letter-spacing:-.065em}.section-head p{margin:0;color:var(--muted);font-weight:560;line-height:1.6;max-width:590px}.route{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;padding:14px;border-radius:var(--r);background:var(--glass);border:1px solid rgba(255,255,255,.78);box-shadow:var(--shadow);backdrop-filter:blur(24px) saturate(180%)}.route-item{padding:18px;border-radius:20px;background:rgba(255,255,255,.72);border:1px solid rgba(16,24,40,.07)}.route-item small{display:block;color:var(--soft);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:860}.route-item strong{display:block;margin-top:5px;font-size:1rem;letter-spacing:-.02em}
+.photo-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:16px}.photo{min-height:470px;position:relative;overflow:hidden;border-radius:var(--r);background:white;border:1px solid rgba(255,255,255,.82);box-shadow:var(--shadow)}.photo-copy{position:absolute;left:22px;right:22px;bottom:22px;z-index:2;padding:20px;border-radius:24px;background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.88);box-shadow:0 18px 46px rgba(16,24,40,.16);backdrop-filter:blur(22px) saturate(180%)}.photo-copy h3{margin:0;font-size:2rem;letter-spacing:-.06em}.photo-copy p{margin:7px 0 0;color:#475467;font-weight:620;line-height:1.55}.stack{display:grid;gap:16px}.mini{display:grid;grid-template-columns:158px 1fr;min-height:146px;overflow:hidden;border-radius:26px;background:var(--glass2);border:1px solid rgba(255,255,255,.82);box-shadow:var(--shadow2);backdrop-filter:blur(22px) saturate(180%)}.mini-text{padding:18px;display:grid;align-content:center}.mini-text h4{margin:0;font-size:1.14rem;letter-spacing:-.035em}.mini-text p{margin:5px 0 0;color:var(--muted);font-weight:560;line-height:1.5;font-size:.93rem}
+.timeline{display:grid;gap:14px}.day{display:grid;grid-template-columns:94px 1fr 260px;gap:14px;align-items:stretch;padding:14px;border-radius:28px;background:rgba(255,255,255,.76);border:1px solid rgba(255,255,255,.80);box-shadow:var(--shadow2);backdrop-filter:blur(24px) saturate(180%)}.date{display:grid;place-items:center;text-align:center;border-radius:20px;background:linear-gradient(180deg,#fff,#f2f4f7);border:1px solid rgba(16,24,40,.07);font-weight:860}.date b{font-size:1.1rem}.date span{display:block;color:var(--soft);font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800}.day-text{padding:12px 4px;display:grid;align-content:center}.badges{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:8px}.badge{font-size:.68rem;font-weight:860;text-transform:uppercase;letter-spacing:.09em;border-radius:999px;padding:6px 9px;background:#f2f4f7;color:#344054}.red{background:#ffe4e8;color:#b42318}.blue{background:#e0f2fe;color:#026aa2}.green{background:#dcfce7;color:#067647}.orange{background:#fef0c7;color:#b54708}.violet{background:#ede9fe;color:#5b21b6}.day h3{margin:0;font-size:1.34rem;letter-spacing:-.045em}.day p{margin:5px 0 0;color:#475467;font-weight:560;line-height:1.55}.day-photo{overflow:hidden;border-radius:20px;min-height:156px;background:#f2f4f7;border:1px solid rgba(16,24,40,.06)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.panel{padding:22px;border-radius:28px;background:rgba(255,255,255,.76);border:1px solid rgba(255,255,255,.82);box-shadow:var(--shadow2);backdrop-filter:blur(24px) saturate(180%)}.panel h3{margin:0 0 10px;font-size:1.22rem;letter-spacing:-.04em}.panel p,.panel li{color:#475467;font-weight:560;line-height:1.55}.price{font-size:2rem;font-weight:900;letter-spacing:-.07em;margin:8px 0;color:#101828}.table-wrap{overflow:auto;border-radius:28px;background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.84);box-shadow:var(--shadow2);backdrop-filter:blur(24px) saturate(180%)}table{width:100%;min-width:760px;border-collapse:collapse}th,td{text-align:left;padding:15px 16px;border-bottom:1px solid rgba(16,24,40,.08)}th{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:#475467;background:rgba(248,250,252,.80)}td{font-weight:560;color:#344054}.total td{background:#fff7ed;color:#101828;font-weight:860}tr:last-child td{border-bottom:0}.budget{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.money{text-align:center;padding:18px;border-radius:24px;background:rgba(255,255,255,.80);border:1px solid rgba(255,255,255,.84);box-shadow:var(--shadow2);backdrop-filter:blur(22px) saturate(180%)}.money .emoji{font-size:1.65rem}.money small{display:block;color:var(--soft);font-size:.68rem;font-weight:860;text-transform:uppercase;letter-spacing:.11em;margin:7px 0 3px}.money b{font-size:1.1rem}.money.final{background:linear-gradient(135deg,#101828,#344054);color:white}.money.final small{color:rgba(255,255,255,.72)}.checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.check{display:flex;gap:13px;align-items:flex-start;padding:17px;border-radius:24px;background:rgba(255,255,255,.80);border:1px solid rgba(255,255,255,.84);box-shadow:var(--shadow2);backdrop-filter:blur(24px) saturate(180%)}.check span{font-size:1.2rem}.check b{display:block;color:#101828}.check p{margin:0;color:#475467;font-weight:560;line-height:1.55}.footer{padding:42px 0 60px;text-align:center;color:#667085;font-weight:720;border-top:1px solid rgba(16,24,40,.08)}.reveal{opacity:0;transform:translateY(26px)}
+@media(max-width:980px){.links{display:none}.hero-grid,.photo-grid{grid-template-columns:1fr}.device{justify-self:stretch}.route{grid-template-columns:repeat(2,1fr)}.day{grid-template-columns:82px 1fr}.day-photo{display:none}.cards{grid-template-columns:1fr}.budget{grid-template-columns:repeat(2,1fr)}.checklist{grid-template-columns:1fr}.screen{min-height:540px}}@media(max-width:560px){.wrap{width:min(100% - 24px,var(--max))}.hero{padding-top:108px}.route{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:10px}.budget{grid-template-columns:1fr}.mini{grid-template-columns:1fr}.mini img{height:150px}.photo{min-height:430px}.day{grid-template-columns:1fr}.date{display:flex;justify-content:center;gap:6px;padding:12px}.device{padding:10px;border-radius:32px}.screen{border-radius:24px}}
 </style>
 </head>
 <body>
-
-<header class="hero" id="top">
-  <nav class="nav">
-    <div class="brand">🇯🇵 Japan 2026</div>
-    <div class="navlinks">
-      <a href="#route">Route</a><a href="#days">Days</a><a href="#logistics">Logistics</a><a href="#budget">Budget</a><a href="#prep">Prep</a>
-    </div>
-  </nav>
-
-  <div class="wrap heroGrid">
-    <div>
-      <div class="eyebrow">2 people · 12 days · budget-smart</div>
-      <h1>Japan Trip Plan</h1>
-      <p class="lead">Tokyo, Hiroshima, Mazda Museum, Miyajima, Osaka, Kyoto, then back to Tokyo. Simple route, strong sights, minimum wasted travel.</p>
-    </div>
-    <div class="heroStats">
-      <div class="stat"><b>Sep 16-27</b><span>Best working plan</span></div>
-      <div class="stat"><b>~C$2.4K</b><span>Per person target</span></div>
-      <div class="stat"><b>4 cities</b><span>Tokyo · Hiroshima · Osaka · Kyoto</span></div>
-      <div class="stat"><b>3 buses</b><span>Saves hotel nights</span></div>
-    </div>
-  </div>
-</header>
-
+<div class="noise"></div><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<nav class="nav"><a class="brand" href="#top"><span class="brandmark">日</span><span>Japan 2026</span></a><div class="links"><a href="#route">Route</a><a href="#highlights">Fun</a><a href="#itinerary">Plan</a><a href="#logistics">Logistics</a><a href="#budget">Budget</a><a href="#prep">Prep</a></div></nav>
+<header class="hero" id="top"><div class="wrap hero-grid"><div class="hero-copy reveal"><div class="kicker">type shi  </div><h1>Japan Trip<br>Upgrade</h1><p>Tokyo anime days, a Mount Fuji view mission, Hiroshima with Mazda Museum, Miyajima island, Osaka neon, and Kyoto shrines. Same budget energy. Less slop. Pictures stay pictures, and if one dies, the fallback saves the page.</p><div class="cta"><a class="btn primary" href="#itinerary">View the plan 🔥</a><a class="btn" href="#budget">Budget check</a></div></div>
+<div class="device reveal"><div class="screen"><div class="cover"><img src="https://images.pexels.com/photos/1108701/pexels-photo-1108701.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Mount Fuji view" data-fallback="fuji" loading="lazy" onerror="swapBrokenImage(this)"></div><div class="screen-body"><h3>Sep 16 to 27</h3><div class="chips"><span class="chip">Tokyo</span><span class="chip">Fuji</span><span class="chip">Hiroshima</span><span class="chip">Osaka</span><span class="chip">Kyoto</span></div><div class="quick-grid"><div class="quick"><b>~C$2.5K</b><span>per person target</span></div><div class="quick"><b>12 days</b><span>compact but stacked</span></div><div class="quick"><b>3 buses</b><span>hotel nights saved</span></div><div class="quick"><b>Fuji day</b><span>weather-flexible</span></div></div></div></div></div></div></header>
 <main class="wrap">
-
-<section id="route">
-  <div class="sectionHead">
-    <h2>Quick Route</h2>
-    <p>Land in Tokyo, move west to Hiroshima for Mazda Museum, then Osaka/Kyoto, then return to Tokyo for the flight home.</p>
-  </div>
-  <div class="route">
-    <div class="routeCard"><small>Start</small><strong>Calgary → Tokyo</strong></div>
-    <div class="routeCard"><small>Stop 1</small><strong>Tokyo</strong></div>
-    <div class="routeCard"><small>Stop 2</small><strong>Hiroshima</strong></div>
-    <div class="routeCard"><small>Stop 3</small><strong>Osaka + Kyoto</strong></div>
-    <div class="routeCard"><small>End</small><strong>Tokyo → Calgary</strong></div>
-  </div>
-</section>
-
-<section id="days">
-  <div class="sectionHead">
-    <h2>Day-by-Day Plan</h2>
-    <p>Readable cards, no text lost on photos. Images are separate, details stay on solid panels.</p>
-  </div>
-
-  <div class="timeline">
-    <article class="day"><div class="pic"><img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=900&q=85" alt="Tokyo night"><div class="dayNum">Day 1-2</div></div><div class="content"><div class="meta"><span class="pill blue">Sep 16-17</span><span class="pill">Tokyo</span></div><h3>Fly Calgary → Tokyo</h3><p>Arrive at Narita, grab Welcome Suica, check in, light night walk in Shinjuku or Shibuya.</p><p class="note">Keep this day easy. Main goal is landing, food, sleep, and getting oriented.</p></div></article>
-
-    <article class="day"><div class="pic"><img src="https://images.unsplash.com/photo-1613861615551-b176e0141e6d?auto=format&fit=crop&w=900&q=85" alt="Akihabara"><div class="dayNum">Day 3</div></div><div class="content"><div class="meta"><span class="pill blue">Sep 18</span><span class="pill purple">Anime</span></div><h3>Akihabara + Asakusa</h3><p>Anime stores, arcades, gachapon, Pokémon Center, then Senso-ji temple in the evening.</p><p class="note">Good first full day because everything is easy by train.</p></div></article>
-
-    <article class="day"><div class="pic"><img src="https://images.unsplash.com/photo-1532236204992-f5e85c024202?auto=format&fit=crop&w=900&q=85" alt="Shibuya"><div class="dayNum">Day 4</div></div><div class="content"><div class="meta"><span class="pill blue">Sep 19</span><span class="pill">Tokyo</span></div><h3>Harajuku, Meiji Shrine, Shibuya</h3><p>Meiji Shrine, Takeshita Street, Shibuya Crossing, Shibuya Sky around sunset.</p><p class="note">Book Shibuya Sky ahead if you want sunset.</p></div></article>
-
-    <article class="day"><div class="pic"><img src="https://images.unsplash.com/photo-1570521462033-3015e76e7432?auto=format&fit=crop&w=900&q=85" alt="Bus"><div class="dayNum">Day 5</div></div><div class="content"><div class="meta"><span class="pill orange">Sep 20</span><span class="pill">Transit</span></div><h3>Tokyo → Hiroshima Overnight Bus</h3><p>Free morning in Tokyo. Depart around evening/night by highway bus and sleep on the way.</p><p class="note">This saves one hotel night and keeps the budget under control.</p></div></article>
-
-    <article class="day"><div class="pic"><img src="https://images.unsplash.com/photo-1576153192396-180ecef2a715?auto=format&fit=crop&w=900&q=85" alt="Hiroshima"><div class="dayNum">Day 6</div></div><div class="content"><div class="meta"><span class="pill red">Sep 21</span><span class="pill">Hiroshima</span></div><h3>Peace Memorial Park + Mazda Museum</h3><p>Morning: Hiroshima Peace Memorial Park and Atomic Bomb Dome. Afternoon: Mazda Museum and factory tour.</p><p class="note">Mazda Museum is free but reservation-only. Book this date early.</p></div></article>
-
-    <article class="day"><div class="pic"><img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=900&q=85" alt="Miyajima"><div class="dayNum">Day 7</div></div><div class="content"><div class="meta"><span class="pill red">Sep 22</span><span class="pill green">Miyajima</span></div><h3>Miyajima Island → Osaka</h3><p>Floating torii gate, Itsukushima Shrine, deer, waterfront walk. Evening bus to Osaka.</p><p class="note">Do Miyajima early so the evening transfer does not feel rushed.</p></div></article>
-
-    <article class="day"><div class="pic"><img src="https://images.unsplash.com/photo-1590559899731-a382839e5549?auto=format&fit=crop&w=900&q=85" alt="Osaka"><div class="dayNum">Day 8</div></div><div class="content"><div class="meta"><span class="pill orange">Sep 23</span><span class="pill">Osaka</span></div><h3>Osaka Main Day</h3><p>Dotonbori, Namba, Shinsaibashi, Osaka Castle, street food and night lights.</p><p class="note">Stay around Namba if possible. It makes the night easier.</p></div></article>
-
-    <article class="day"><div class="pic"><img src="https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?auto=format&fit=crop&w=900&q=85" alt="Kyoto"><div class="dayNum">Day 9</div></div><div class="content"><div class="meta"><span class="pill green">Sep 24</span><span class="pill">Kyoto</span></div><h3>Kyoto Day Trip</h3><p>Fushimi Inari early, Gion streets, Nishiki Market, then return to Osaka by train.</p><p class="note">Start early. Kyoto crowds get annoying fast.</p></div></article>
-
-    <article class="day"><div class="pic"><img src="https://images.unsplash.com/photo-1624601573012-1f0a5e3e14a1?auto=format&fit=crop&w=900&q=85" alt="Travel"><div class="dayNum">Day 10</div></div><div class="content"><div class="meta"><span class="pill orange">Sep 25</span><span class="pill">Transit</span></div><h3>Osaka → Tokyo Overnight Bus</h3><p>Free day in Osaka, then overnight bus back to Tokyo.</p><p class="note">If budget allows, swap this for Shinkansen to make the trip more comfortable.</p></div></article>
-
-    <article class="day"><div class="pic"><img src="https://images.unsplash.com/photo-1607604276583-3f85d3e4b2e0?auto=format&fit=crop&w=900&q=85" alt="Anime shops"><div class="dayNum">Day 11</div></div><div class="content"><div class="meta"><span class="pill blue">Sep 26</span><span class="pill purple">Tokyo</span></div><h3>Last Tokyo Day</h3><p>Nakano Broadway, Ghibli merch, shopping, anime cafés, TeamLab or Odaiba if wanted.</p><p class="note">Keep this as flexible shopping and final catch-up day.</p></div></article>
-
-    <article class="day"><div class="pic"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109db05?auto=format&fit=crop&w=900&q=85" alt="Plane"><div class="dayNum">Day 12</div></div><div class="content"><div class="meta"><span class="pill">Sep 27</span><span class="pill">Home</span></div><h3>Tokyo → Calgary</h3><p>Fly home from Narita. Keep luggage simple and leave early for airport.</p><p class="note">No big plan this day. Airport, food, flight.</p></div></article>
-  </div>
-</section>
-
-<section id="logistics">
-  <div class="sectionHead">
-    <h2>Logistics</h2>
-    <p>Simple movement plan, where to sleep, and what to book.</p>
-  </div>
-
-  <div class="grid3">
-    <div class="panel"><h3>✈️ Flights</h3><p>Target WestJet Calgary to Tokyo Narita round trip.</p><div class="price">~C$1,350 pp</div><p>Best target: mid-September departure, late-September return.</p></div>
-    <div class="panel"><h3>🏨 Stays</h3><ul><li>Tokyo: 5 nights total</li><li>Hiroshima: 1 night</li><li>Osaka: 2 nights</li><li>Overnight buses: 3 nights saved</li></ul></div>
-    <div class="panel"><h3>🏭 Mazda Museum</h3><ul><li>Book Sep 21 Monday</li><li>Free entry</li><li>Reservation required</li><li>English tour if available</li><li>JR Mukainada Station, then short walk</li></ul></div>
-  </div>
-
-  <div style="height:18px"></div>
-  <div class="tableWrap">
-    <table>
-      <thead><tr><th>Leg</th><th>How</th><th>Time</th><th>Cost/person</th></tr></thead>
-      <tbody>
-        <tr><td>Tokyo → Hiroshima</td><td>Overnight highway bus</td><td>~12h</td><td>~C$65</td></tr>
-        <tr><td>Hiroshima → Miyajima</td><td>JR train + ferry</td><td>~45 min</td><td>~C$8</td></tr>
-        <tr><td>Hiroshima → Osaka</td><td>Evening highway bus</td><td>~6.5h</td><td>~C$45</td></tr>
-        <tr><td>Osaka ↔ Kyoto</td><td>Train day trip</td><td>~30 min each way</td><td>~C$16 RT</td></tr>
-        <tr><td>Osaka → Tokyo</td><td>Overnight highway bus</td><td>~9h</td><td>~C$55</td></tr>
-        <tr><td>Local transit</td><td>Welcome Suica / IC card</td><td>All trip</td><td>~C$70</td></tr>
-        <tr class="total"><td colspan="3">Transport total per person</td><td>~C$260</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section id="budget">
-  <div class="sectionHead">
-    <h2>Budget Snapshot</h2>
-    <p>Per person, based on shared rooms and budget-smart transport.</p>
-  </div>
-  <div class="budget">
-    <div class="money"><div class="emoji">✈️</div><small>Flight</small><b>~C$1,350</b></div>
-    <div class="money"><div class="emoji">🚌</div><small>Transport</small><b>~C$260</b></div>
-    <div class="money"><div class="emoji">🛏️</div><small>Stay</small><b>~C$420</b></div>
-    <div class="money"><div class="emoji">🍜</div><small>Food</small><b>~C$300</b></div>
-    <div class="money"><div class="emoji">📶</div><small>Extras</small><b>~C$80</b></div>
-    <div class="money final"><div class="emoji">💸</div><small>Total pp</small><b>~C$2,410</b></div>
-  </div>
-</section>
-
-<section id="prep">
-  <div class="sectionHead">
-    <h2>Before You Go</h2>
-    <p>Only travel-planning items. Personal visa/re-entry details removed.</p>
-  </div>
-  <div class="checklist">
-    <div class="check"><span>🟡</span><p><b>June/July</b> Apply for Japan tourist visa if needed based on passport.</p></div>
-    <div class="check"><span>🟢</span><p><b>July</b> Book flights once dates are locked.</p></div>
-    <div class="check"><span>🏭</span><p><b>July</b> Reserve Mazda Museum tour for Sep 21.</p></div>
-    <div class="check"><span>🏨</span><p><b>July/Aug</b> Book Tokyo, Hiroshima, and Osaka stays.</p></div>
-    <div class="check"><span>🚌</span><p><b>August</b> Book highway buses: Tokyo→Hiroshima, Hiroshima→Osaka, Osaka→Tokyo.</p></div>
-    <div class="check"><span>📱</span><p><b>Before flight</b> Download Google Maps offline, Google Translate Japanese pack, and eSIM.</p></div>
-  </div>
-</section>
-
-</main>
-
-<footer class="footer">
-  Japan Trip Plan · 2 People · Sep 16-27, 2026 · Clean logistics version
-</footer>
-
-</body>
-</html>
+<section id="route" class="reveal"><div class="section-head"><h2>Route, cleaned up</h2><p>No chaos route. Land Tokyo, loop west for Hiroshima and Osaka/Kyoto, return to Tokyo. Fuji stays as a day trip so the budget does not explode.</p></div><div class="route">
+<div class="route-item"><small>Fly in</small><strong>Calgary → Tokyo</strong></div>
+<div class="route-item"><small>Base 1</small><strong>Tokyo</strong></div>
+<div class="route-item"><small>Day trip</small><strong>Mount Fuji</strong></div>
+<div class="route-item"><small>Base 2</small><strong>Hiroshima</strong></div>
+<div class="route-item"><small>Base 3</small><strong>Osaka + Kyoto</strong></div>
+<div class="route-item"><small>Fly out</small><strong>Tokyo → Calgary</strong></div>
+</div></section>
+<section id="highlights" class="reveal"><div class="section-head"><h2>More fun, still sane</h2><p>Fuji gets added as the big cinematic day. The rest stays high-value: anime, neon, shrine, Mazda, island.</p></div><div class="photo-grid">
+<article class="photo"><img src="https://images.pexels.com/photos/1108701/pexels-photo-1108701.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Mount Fuji" data-fallback="fuji" loading="lazy" onerror="swapBrokenImage(this)"><div class="photo-copy"><h3>Mount Fuji View Mission</h3><p>Kawaguchiko / Chureito Pagoda style day trip. If weather is trash, swap with final Tokyo flex day. No expensive guided-tour nonsense.</p></div></article>
+<div class="stack">
+<article class="mini"><img src="https://images.pexels.com/photos/402028/pexels-photo-402028.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Anime + Arcades" data-fallback="tokyo" loading="lazy" onerror="swapBrokenImage(this)"><div class="mini-text"><h4>Anime + Arcades</h4><p>Akihabara and Nakano Broadway. Figures, games, shops, and bad financial decisions.</p></div></article>
+<article class="mini"><img src="https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Osaka Night" data-fallback="osaka" loading="lazy" onerror="swapBrokenImage(this)"><div class="mini-text"><h4>Osaka Night</h4><p>Dotonbori, Namba, Shinsaibashi. Cheap eats and neon photos.</p></div></article>
+<article class="mini"><img src="https://images.pexels.com/photos/301614/pexels-photo-301614.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Miyajima Island" data-fallback="miyajima" loading="lazy" onerror="swapBrokenImage(this)"><div class="mini-text"><h4>Miyajima Island</h4><p>Floating torii, shrine, deer, waterfront. Wallpaper day.</p></div></article>
+</div></div></section>
+<section id="itinerary" class="reveal"><div class="section-head"><h2>Day-by-day</h2><p>Readable layout. No important text on top of busy images. Photos are separate, content is clean.</p></div><div class="timeline">
+<article class="day"><div class="date"><b>1-2</b><span>Sep 16-17</span></div><div class="day-text"><div class="badges"><span class="badge blue">Arrival</span><span class="badge">Tokyo</span></div><h3>Fly Calgary → Tokyo</h3><p>Arrive Narita, IC card, check in, light Shinjuku or Shibuya night walk.</p><p>Jet lag wins if you act tough. Land, eat, sleep.</p></div><div class="day-photo"><img src="https://images.pexels.com/photos/2506923/pexels-photo-2506923.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Fly Calgary → Tokyo" data-fallback="tokyo" loading="lazy" onerror="swapBrokenImage(this)"></div></article>
+<article class="day"><div class="date"><b>3</b><span>Sep 18</span></div><div class="day-text"><div class="badges"><span class="badge violet">Anime</span><span class="badge">Tokyo</span></div><h3>Akihabara + Asakusa</h3><p>Anime shops, arcades, gachapon, Pokémon Center, then Senso-ji at night.</p><p>Classic first full Tokyo day. Easy trains, high dopamine.</p></div><div class="day-photo"><img src="https://images.pexels.com/photos/402028/pexels-photo-402028.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Akihabara + Asakusa" data-fallback="tokyo" loading="lazy" onerror="swapBrokenImage(this)"></div></article>
+<article class="day"><div class="date"><b>4</b><span>Sep 19</span></div><div class="day-text"><div class="badges"><span class="badge blue">City</span><span class="badge">Tokyo</span></div><h3>Harajuku, Meiji Shrine, Shibuya</h3><p>Meiji Shrine, Takeshita Street, Shibuya Crossing, optional Shibuya Sky if tickets are sane.</p><p>The Tokyo postcard day. Keep it clean.</p></div><div class="day-photo"><img src="https://images.pexels.com/photos/1510595/pexels-photo-1510595.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Harajuku, Meiji Shrine, Shibuya" data-fallback="city" loading="lazy" onerror="swapBrokenImage(this)"></div></article>
+<article class="day"><div class="date"><b>5</b><span>Sep 20</span></div><div class="day-text"><div class="badges"><span class="badge green">Fuji</span><span class="badge">Kawaguchiko</span></div><h3>Mount Fuji View Mission</h3><p>Tokyo to Fuji Five Lakes. Chureito Pagoda, lake views, optional ropeway if the weather is not trash.</p><p>Weather-flex day. If clouds win, swap with the final Tokyo day.</p></div><div class="day-photo"><img src="https://images.pexels.com/photos/1108701/pexels-photo-1108701.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Mount Fuji View Mission" data-fallback="fuji" loading="lazy" onerror="swapBrokenImage(this)"></div></article>
+<article class="day"><div class="date"><b>6</b><span>Sep 21</span></div><div class="day-text"><div class="badges"><span class="badge orange">Transit</span><span class="badge">Tokyo → Hiroshima</span></div><h3>Tokyo Flex + Overnight Bus</h3><p>Use the day for food, shopping, or recovery. Evening highway bus to Hiroshima.</p><p>This keeps Fuji inside the budget by saving a hotel night.</p></div><div class="day-photo"><img src="https://images.pexels.com/photos/1426516/pexels-photo-1426516.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Tokyo Flex + Overnight Bus" data-fallback="train" loading="lazy" onerror="swapBrokenImage(this)"></div></article>
+<article class="day"><div class="date"><b>7</b><span>Sep 22</span></div><div class="day-text"><div class="badges"><span class="badge red">Mazda</span><span class="badge">Hiroshima</span></div><h3>Peace Park + Mazda Museum</h3><p>Peace Memorial Park, Atomic Bomb Dome, then Mazda Museum or factory tour if booked for this weekday.</p><p>Mazda is reservation-based. Book early.</p></div><div class="day-photo"><img src="https://images.pexels.com/photos/208701/pexels-photo-208701.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Peace Park + Mazda Museum" data-fallback="hiroshima" loading="lazy" onerror="swapBrokenImage(this)"></div></article>
+<article class="day"><div class="date"><b>8</b><span>Sep 23</span></div><div class="day-text"><div class="badges"><span class="badge red">Island</span><span class="badge">Miyajima → Osaka</span></div><h3>Miyajima Island → Osaka</h3><p>Floating torii, shrine, deer, waterfront walk. Evening transfer toward Osaka.</p><p>This is the wallpaper day. Do not sleep in.</p></div><div class="day-photo"><img src="https://images.pexels.com/photos/301614/pexels-photo-301614.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Miyajima Island → Osaka" data-fallback="miyajima" loading="lazy" onerror="swapBrokenImage(this)"></div></article>
+<article class="day"><div class="date"><b>9</b><span>Sep 24</span></div><div class="day-text"><div class="badges"><span class="badge orange">Neon</span><span class="badge">Osaka</span></div><h3>Osaka Neon Night</h3><p>Dotonbori, Namba, Shinsaibashi, Osaka Castle, cheap food crawl.</p><p>Stay near Namba. Future legs will thank you.</p></div><div class="day-photo"><img src="https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Osaka Neon Night" data-fallback="osaka" loading="lazy" onerror="swapBrokenImage(this)"></div></article>
+<article class="day"><div class="date"><b>10</b><span>Sep 25</span></div><div class="day-text"><div class="badges"><span class="badge green">Shrines</span><span class="badge">Kyoto</span></div><h3>Kyoto Day Trip</h3><p>Fushimi Inari early, Gion streets, Nishiki Market, then back to Osaka or overnight bus to Tokyo.</p><p>Start early or the crowds will humble you.</p></div><div class="day-photo"><img src="https://images.pexels.com/photos/161401/fushimi-inari-taisha-shrine-kyoto-japan-161401.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Kyoto Day Trip" data-fallback="kyoto" loading="lazy" onerror="swapBrokenImage(this)"></div></article>
+<article class="day"><div class="date"><b>11</b><span>Sep 26</span></div><div class="day-text"><div class="badges"><span class="badge violet">Flex</span><span class="badge">Tokyo</span></div><h3>Final Tokyo Flex Day</h3><p>Nakano Broadway, Ghibli merch, TeamLab or Odaiba if budget allows, final shopping.</p><p>Also the backup Fuji day if weather ruined the first attempt.</p></div><div class="day-photo"><img src="https://images.pexels.com/photos/2614818/pexels-photo-2614818.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Final Tokyo Flex Day" data-fallback="city" loading="lazy" onerror="swapBrokenImage(this)"></div></article>
+<article class="day"><div class="date"><b>12</b><span>Sep 27</span></div><div class="day-text"><div class="badges"><span class="badge ">Home</span><span class="badge">Tokyo → Calgary</span></div><h3>Fly Home</h3><p>Airport day. Keep luggage simple, leave early for Narita, fly home.</p><p>No final-hour chaos. Rare mature decision.</p></div><div class="day-photo"><img src="https://images.pexels.com/photos/358220/pexels-photo-358220.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Fly Home" data-fallback="plane" loading="lazy" onerror="swapBrokenImage(this)"></div></article>
+</div></section>
+<section id="logistics" class="reveal"><div class="section-head"><h2>Logistics</h2><p>Fuji adds cost, so the plan offsets with buses, shared rooms, and cheap/free attractions.</p></div><div class="cards"><article class="panel"><h3>Flights</h3><p>Target Calgary to Tokyo Narita round trip.</p><div class="price">~C$1,350 pp</div><p>Mid-week dates usually give the best shot.</p></article><article class="panel"><h3>Fuji day</h3><p>Day trip from Tokyo. Weather-dependent. Swap with final Tokyo flex day if cloudy.</p><p>Viewpoint-based, not guided-tour pricing.</p></article><article class="panel"><h3>Stays</h3><p>Tokyo: 5 nights. Hiroshima: 1 night. Osaka: 2 nights. Overnight buses: 3 hotel nights saved.</p><p>Near stations is the move.</p></article></div><div style="height:18px"></div><div class="table-wrap"><table><thead><tr><th>Leg</th><th>How</th><th>Budget logic</th><th>Cost/person</th></tr></thead><tbody>
+<tr><td>Tokyo → Fuji area → Tokyo</td><td>Bus/train day trip</td><td>Big fun upgrade</td><td>~C$50-80</td></tr>
+<tr><td>Tokyo → Hiroshima</td><td>Overnight highway bus</td><td>Saves hotel night</td><td>~C$65</td></tr>
+<tr><td>Hiroshima → Miyajima</td><td>Train + ferry</td><td>Cheap high-value day</td><td>~C$8-15</td></tr>
+<tr><td>Hiroshima → Osaka</td><td>Bus / budget rail</td><td>Keep simple</td><td>~C$45-70</td></tr>
+<tr><td>Osaka ↔ Kyoto</td><td>Train day trip</td><td>No extra hotel move</td><td>~C$16</td></tr>
+<tr><td>Osaka → Tokyo</td><td>Overnight bus</td><td>Saves hotel night</td><td>~C$55</td></tr>
+<tr><td>Local transit</td><td>IC card</td><td>All cities</td><td>~C$70</td></tr>
+<tr class="total"><td colspan="3">Transport target per person</td><td>~C$310-370</td></tr></tbody></table></div></section>
+<section id="budget" class="reveal"><div class="section-head"><h2>Budget snapshot</h2><p>Still basically the same budget. Fuji makes transport higher, but the total stays in the same neighborhood.</p></div><div class="budget">
+<div class="money"><div class="emoji">✈️</div><small>Flight</small><b>~C$1,350</b></div>
+<div class="money"><div class="emoji">🚆</div><small>Transport + Fuji</small><b>~C$340</b></div>
+<div class="money"><div class="emoji">🛏️</div><small>Stay split</small><b>~C$420</b></div>
+<div class="money"><div class="emoji">🍜</div><small>Food</small><b>~C$300</b></div>
+<div class="money"><div class="emoji">🎟️</div><small>Extras</small><b>~C$80</b></div>
+<div class="money final"><div class="emoji">💸</div><small>Total pp</small><b>~C$2,490</b></div>
+</div></section>
+<section id="prep" class="reveal"><div class="section-head"><h2>Before you go</h2><p>Shareable planning list only. No personal admin. No weird private stuff.</p></div><div class="checklist">
+<div class="check"><span>🎫</span><p><b>July</b>Lock dates and book flights when the price is right.</p></div>
+<div class="check"><span>🏭</span><p><b>July</b>Reserve Mazda Museum tour for the Hiroshima weekday.</p></div>
+<div class="check"><span>🏨</span><p><b>July/Aug</b>Book Tokyo, Hiroshima, and Osaka stays near stations.</p></div>
+<div class="check"><span>🚌</span><p><b>August</b>Book highway buses for the long legs.</p></div>
+<div class="check"><span>🗻</span><p><b>Week of trip</b>Check Fuji weather and swap with Tokyo flex day if cloudy.</p></div>
+<div class="check"><span>📱</span><p><b>Before flight</b>eSIM, Google Maps offline, Translate Japanese pack.</p></div>
+</div></section></main><footer class="footer">Japan Trip Plan </footer>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script>
+const fallbackSVG=(kind)=>{const palette={fuji:['#DFF5FF','#FFF7ED','#0EA5E9','#FFFFFF','Mount Fuji'],tokyo:['#E0F2FE','#F8FAFC','#344054','#FF4D5E','Tokyo'],city:['#EEF2FF','#FFFFFF','#8B5CF6','#0EA5E9','City Day'],train:['#F2F4F7','#FFFFFF','#344054','#0EA5E9','Transit'],hiroshima:['#FEE2E2','#FFFFFF','#EF4444','#B91C1C','Hiroshima'],miyajima:['#DBEAFE','#FFF7ED','#DC2626','#BAE6FD','Miyajima'],osaka:['#FEF3C7','#FEE2E2','#FF4D5E','#8B5CF6','Osaka'],kyoto:['#ECFDF3','#FEF7C3','#EF4444','#10B981','Kyoto'],plane:['#E0F2FE','#FFFFFF','#0EA5E9','#38BDF8','Flight']};const p=palette[kind]||palette.city;const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${p[0]}"/><stop offset="1" stop-color="${p[1]}"/></linearGradient><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.12"/></feComponentTransfer></filter></defs><rect width="1200" height="800" fill="url(#bg)"/><rect width="1200" height="800" filter="url(#grain)" opacity="0.25"/><circle cx="940" cy="170" r="90" fill="#fff" opacity="0.86"/><circle cx="170" cy="180" r="130" fill="#fff" opacity="0.40"/><path d="M0 620 C220 530 360 650 600 560 C830 470 940 590 1200 500 L1200 800 L0 800 Z" fill="${p[3]}" opacity="0.25"/><path d="M260 660 L600 170 L940 660 Z" fill="${p[2]}" opacity="0.80"/><path d="M600 170 L700 315 L640 280 L600 350 L560 280 L500 315 Z" fill="#fff" opacity="0.95"/><rect x="90" y="610" width="1020" height="88" rx="44" fill="#fff" opacity="0.45"/><text x="96" y="112" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="54" font-weight="800" fill="#101828" opacity="0.82">${p[4]}</text></svg>`;return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg)};
+function swapBrokenImage(img){if(img.dataset.swapped==='1')return;img.dataset.swapped='1';img.src=fallbackSVG(img.dataset.fallback||'city')}
+window.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('img').forEach(img=>{if(img.complete&&img.naturalWidth===0)swapBrokenImage(img)});if(window.gsap){gsap.registerPlugin(ScrollTrigger);gsap.from('.nav',{y:-26,opacity:0,duration:.7,ease:'power3.out'});gsap.to('.reveal',{opacity:1,y:0,duration:.85,stagger:.07,ease:'power3.out'});gsap.utils.toArray('section.reveal').forEach(el=>{gsap.fromTo(el,{opacity:0,y:34},{opacity:1,y:0,duration:.85,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 82%'}})});gsap.utils.toArray('.day').forEach((el,i)=>{gsap.fromTo(el,{opacity:0,y:24,scale:.985},{opacity:1,y:0,scale:1,duration:.55,ease:'power2.out',delay:(i%3)*.025,scrollTrigger:{trigger:el,start:'top 88%'}})});gsap.to('.device',{y:-10,duration:2.8,repeat:-1,yoyo:true,ease:'sine.inOut'})}else{document.querySelectorAll('.reveal').forEach(el=>{el.style.opacity=1;el.style.transform='none'})}});
+</script>
+</body></html>
